@@ -2,26 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+  --tw-bg-opacity: 1;
+background-color: rgb(16 23 42/var(--tw-bg-opacity));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components{
+  
+  .flexRow {
+    @apply flex flex-row
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .flexCol {
+    @apply flex flex-col
+  }
+
+  .flexRowCenter {
+    @apply flex flex-row justify-center items-center;
+  }
+
+  .flexColCenter {
+    @apply flex flex-col justify-center items-center;
+  }
 }

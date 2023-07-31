@@ -1,113 +1,291 @@
 import Image from 'next/image'
+"use client"
+import About from '../components/About'
+
+import Link from 'next/link'
+import Contact from '@/components/Contact'
+import Experience from '@/components/Experience'
+import Skills from '@/components/Skills'
+
+import { ImLinkedin, ImGithub, ImPhone, ImDownload } from "react-icons/im"
+import { useEffect, useRef, useState } from 'react'
+import Portfolio from '@/components/Portfolio'
+
+
+
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+	const mainRef = useRef<null | HTMLDivElement>(null)
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+	const aboutRef = useRef<null | HTMLDivElement>(null)
+	const experienceRef = useRef<null | HTMLDivElement>(null)
+	const skillsRef = useRef<null | HTMLDivElement>(null)
+	const contactRef = useRef<null | HTMLDivElement>(null)
+	const portfolioRef = useRef<null | HTMLDivElement>(null)
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+	const [offesets, setOffsets] = useState<{ [key: string]: number }>()
+	const [scrollPosition, setScrollPosition] = useState(0)
+	const [currentView, setCurrentView] = useState("about")
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+	useEffect(() => {
+		// Function to handle scroll event and update active section
+		const sections = ['about', 'skills', "experience",  "portfolio", "contact"];
+		const sectionPositions = sections.reduce((positions: { [key: string]: number }, section) => {
+
+			console.log(positions);
+
+			const el = document.getElementById(section);
+			if (el) {
+				positions[section] = el.offsetTop - 400;
+			}
+			console.log(positions, section);
+
+			return positions;
+		}, {});
+		console.log(sectionPositions);
+		setOffsets(sectionPositions)
+
+		const handleScroll = () => {
+			setScrollPosition(window.scrollY);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+
+		// Clean up the event listener on component unmount
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+
+	}, []);
+
+	useEffect(() => {
+		console.log(scrollPosition);
+		if (offesets) {
+			if (scrollPosition >= offesets["contact"]) {
+				setCurrentView("contact")
+			} else if (scrollPosition < offesets["contact"] && scrollPosition >= offesets["portfolio"]) {
+				setCurrentView("portfolio")
+			} else if (scrollPosition < offesets["portfolio"] && scrollPosition >= offesets["skills"]) {
+				setCurrentView("skills")
+			} else if (scrollPosition < offesets["skills"] && scrollPosition >= offesets["experience"]) {
+				setCurrentView("experience")
+			} else {
+				setCurrentView("about")
+			}
+		}
+		console.log(currentView);
+
+	}, [scrollPosition])
+
+
+	const scrollToView = (element: number) => {
+
+		switch (element) {
+			case 0:
+				if (aboutRef.current) {
+					aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+				}
+				break;
+
+			case 1:
+				if (experienceRef.current) {
+					experienceRef.current.scrollIntoView({ behavior: 'smooth' });
+				}
+				break;
+
+			case 2:
+				if (skillsRef.current) {
+					skillsRef.current.scrollIntoView({ behavior: 'smooth' });
+				}
+				break;
+
+			case 3:
+				if (portfolioRef.current) {
+					portfolioRef.current.scrollIntoView({ behavior: 'smooth' });
+				}
+				break;
+
+			case 4:
+				if (contactRef.current) {
+					contactRef.current.scrollIntoView({ behavior: 'smooth' });
+				}
+				break;
+
+			default:
+				break;
+		}
+
+	}
+
+
+	return (
+		<main ref={mainRef} className="xl:px-24 py-10 xl:py-24 w-screen h-screen flexCol lg:flex-row items-center justify-between">
+			<div className='py-11 xl:py-24 pl-10 xl:pl-24 lg:fixed lg:w-[700px] h-full flexCol text-base font-medium text-slate-400'>
+				<span className='text-4xl sm:text-5xl font-bold text-slate-200 drop-shadow-sm'>Rakibul Alam Nahin</span>
+				<span className='my-4 text-xl font-medium text-slate-300'>Software Engineer/Developer</span>
+				<span className=' lg:w-100'>
+					Hello, I am Nahin currently working on the exciting field of <span className='font-bold'>Machine Learning </span>
+					and very much passionate on the field of <span className='font-bold'>MERN Stack Development</span>.
+				</span>
+
+				<div className='mt-14 flex flex-col w-40 gap-4 text-xs text-slate-400'>
+					<span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
+						onClick={() => { scrollToView(0) }}
+					>
+						<span
+							className='flex w-10 h-[1px] bg-slate-400 group-hover:w-16 group-hover:h-[2px] group-hover:bg-neon-blue  duration-500 ease-in-out'
+							style={{
+								backgroundColor: currentView == "about" ? "rgb(21, 137, 255)" : "",
+								width: currentView == "about" ? "64px" : "",
+								height: currentView == "about" ? "2px" : "",
+							}}
+						></span>
+						<span
+							className='group-hover:w-14 group-hover:text-neon-blue group-hover:text-sm group-hover:font-semibold duration-500 ease-in-out'
+							style={{
+								color: currentView == "about" ? "rgb(21, 137, 255)" : "",
+								fontSize: currentView == "about" ? "14px" : "",
+								lineHeight: currentView == "about" ? "20px" : "",
+								fontWeight: currentView == "about" ? "600" : "",
+							}}
+						>
+							ABOUT</span>
+					</span>
+
+
+
+
+					<span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
+						onClick={() => { scrollToView(1) }}
+					>
+						<span className='flex w-10 h-[1px] bg-slate-400 group-hover:w-16 group-hover:h-[2px] group-hover:bg-neon-blue  duration-500 ease-in-out'
+							style={{
+								backgroundColor: currentView == "experience" ? "rgb(21, 137, 255)" : "",
+								width: currentView == "experience" ? "64px" : "",
+								height: currentView == "experience" ? "2px" : "",
+							}}
+						></span>
+						<span className='group-hover:w-14 group-hover:text-neon-blue group-hover:text-sm group-hover:font-semibold duration-500 ease-in-out'
+							style={{
+								color: currentView == "experience" ? "rgb(21, 137, 255)" : "",
+								fontSize: currentView == "experience" ? "14px" : "",
+								lineHeight: currentView == "experience" ? "20px" : "",
+								fontWeight: currentView == "experience" ? "600" : "",
+							}}
+						>EXPERIENCE</span>
+					</span>
+
+
+
+
+					<span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
+						onClick={() => { scrollToView(2) }}
+
+					>
+						<span className='flex w-10 h-[1px] bg-slate-400 group-hover:w-16 group-hover:h-[2px] group-hover:bg-neon-blue  duration-500 ease-in-out'
+							style={{
+								backgroundColor: currentView == "skills" ? "rgb(21, 137, 255)" : "",
+								width: currentView == "skills" ? "64px" : "",
+								height: currentView == "skills" ? "2px" : "",
+							}}
+						></span>
+						<span className='group-hover:w-14 group-hover:text-neon-blue group-hover:text-sm group-hover:font-semibold duration-500 ease-in-out'
+							style={{
+								color: currentView == "skills" ? "rgb(21, 137, 255)" : "",
+								fontSize: currentView == "skills" ? "14px" : "",
+								lineHeight: currentView == "skills" ? "20px" : "",
+								fontWeight: currentView == "skills" ? "600" : "",
+							}}
+						>SKILLS</span>
+					</span>
+
+
+
+					<span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
+						onClick={() => { scrollToView(3) }}
+
+					>
+						<span className='flex w-10 h-[1px] bg-slate-400 group-hover:w-16 group-hover:h-[2px] group-hover:bg-neon-blue  duration-500 ease-in-out'
+							style={{
+								backgroundColor: currentView == "portfolio" ? "rgb(21, 137, 255)" : "",
+								width: currentView == "portfolio" ? "64px" : "",
+								height: currentView == "portfolio" ? "2px" : "",
+							}}
+						></span>
+						<span className='group-hover:w-14 group-hover:text-neon-blue group-hover:text-sm group-hover:font-semibold duration-500 ease-in-out'
+							style={{
+								color: currentView == "portfolio" ? "rgb(21, 137, 255)" : "",
+								fontSize: currentView == "portfolio" ? "14px" : "",
+								lineHeight: currentView == "portfolio" ? "20px" : "",
+								fontWeight: currentView == "portfolio" ? "600" : "",
+							}}
+						>PORTFOLIO</span>
+					</span>
+
+
+
+
+					<span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
+						onClick={() => { scrollToView(4) }}
+
+					>
+						<span className='flex w-10 h-[1px] bg-slate-400 group-hover:w-16 group-hover:h-[2px] group-hover:bg-neon-blue  duration-500 ease-in-out'
+							style={{
+								backgroundColor: currentView == "contacts" ? "rgb(21, 137, 255)" : "",
+								width: currentView == "contact" ? "64px" : "",
+								height: currentView == "contact" ? "2px" : "",
+							}}
+						></span>
+						<span className='group-hover:w-14 group-hover:text-neon-blue group-hover:text-sm group-hover:font-semibold duration-500 ease-in-out'
+							style={{
+								color: currentView == "contact" ? "rgb(21, 137, 255)" : "",
+								fontSize: currentView == "contact" ? "14px" : "",
+								lineHeight: currentView == "contact" ? "20px" : "",
+								fontWeight: currentView == "contact" ? "600" : "",
+							}}
+						>CONTACTS</span>
+					</span>
+
+					
+
+				</div>
+
+				<div className='mt-24 gap-5 flexRowCenter justify-start'>
+					<Link href={"/"}><span className='flex text-2xl text-slate-400 hover:text-neon-blue duration-200 ease-in-out'><ImLinkedin /></span></Link>
+					<Link href={"/"}><span className='flex text-2xl text-slate-400 hover:text-neon-blue duration-200 ease-in-out'><ImGithub /></span></Link>
+					<Link href={"/"}><span className='flex text-2xl text-slate-400 hover:text-neon-blue duration-200 ease-in-out'><ImPhone /></span></Link>
+					<a href='https://github.com/rakibulnahin/resume/blob/main/Nahin-AI.pdf'
+						className='px-5 py-3 flexRowCenter rounded-xl gap-3 bg-neon-blue text-white'
+						download="Nahin's CV"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<span>Resume</span> <ImDownload />
+					</a>
+				</div>
+
+
+			</div>
+
+			<div className='w-full h-full flex flex-row-reverse'>
+				{/* <span>hello</span> */}
+				<div className='flex flex-col self-end gap-20 lg:w-1/2 h-full text-base font-medium text-slate-400'>
+					<About ref={aboutRef} />
+					<Experience ref={experienceRef} />
+					<Skills ref={skillsRef} />
+					<Portfolio ref={portfolioRef} />
+					<Contact ref={contactRef} />
+				</div>
+			</div>
+
+			{/* <div className='flex flex-col self-end gap-20 lg:w-1/2 h-full text-base font-medium text-slate-400'>
+        <About />
+        <Experience/>
+        <Skills/>
+      </div> */}
+
+		</main>
+	)
 }
