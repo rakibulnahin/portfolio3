@@ -11,17 +11,31 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
         "used": String[]
     }
 
-    const experince:experinceType[] = [{
-        "organization": "Shoplover (US-Bangla Group)",
-        "position": "React Developer Intern",
-        "startdate": "DEC 2022",
-        "enddate": "FEB 2023",
-        "description": "As a fresher I have learned a lot from here. I have worked in their live \
-            web project as a web ecommere developer and helped developing the Front-End using Next JS\
-            and Tailwind CSS. I was also involved in building sample UI for a food delivery app using \
-            React Native.",
-        "used": ["Next JS", "Tailwind CSS", "React Native Expo"]
-    }]
+    const experince:experinceType[] = [
+        
+        {
+            "organization": "BRAC BANK",
+            "position": "Software Engineer Intern",
+            "startdate": "JULY 2023",
+            "enddate": "ONGOING",
+            "description": "I am envolved as a software engineer in the Core Banking part of \
+                BRAC BANK currenly working \
+                Web UI using HTMl, CSS and Javascript DOM along with Tomcat as server-side programming.",
+            "used": ["HTML", "CSS", "Javascript", "DOM", "Tomcat"]
+        },
+        
+        {
+            "organization": "Shoplover (US-Bangla Group)",
+            "position": "React Developer Intern",
+            "startdate": "DEC 2022",
+            "enddate": "FEB 2023",
+            "description": "As a fresher I have learned a lot from here. I have worked in their live \
+                web project as a web ecommere developer and helped developing the Front-End using Next JS\
+                and Tailwind CSS. I was also involved in building sample UI for a food delivery app using \
+                React Native.",
+            "used": ["Next JS", "Tailwind CSS", "React Native Expo"]
+        }
+    ]
 
     return (
         <div ref={ref} id="experience" className='flexCol pb-10 gap-7'>
@@ -38,7 +52,7 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
                         group transition-all'
                     >
 
-                        <div className='w-48 h-full bg flexCol items-center'>
+                        <div className='w-48 min-h-full flexCol items-center'>
                             <span className='flexRowCenter gap-1 text-xs duration-500 group-hover:text-white ease-in-out'>
                                 <span>{value.startdate}</span>
                                 <span className='w-3 h-0.5 bg-white'></span>
