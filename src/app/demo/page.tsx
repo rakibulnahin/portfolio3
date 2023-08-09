@@ -6,7 +6,7 @@ import Contact from '@/components/Contact'
 import Experience from '@/components/Experience'
 import Skills from '@/components/Skills'
 
-import { ImLinkedin, ImGithub, ImPhone, ImDownload } from "react-icons/im"
+import { ImLinkedin, ImGithub, ImMail2, ImDownload } from "react-icons/im"
 import { useEffect, useRef, useState } from 'react'
 import Portfolio from '@/components/Portfolio'
 import { Londrina_Outline } from 'next/font/google'
@@ -41,7 +41,7 @@ export default function Home() {
 
 			const el = document.getElementById(section);
 			if (el) {
-				positions[section] = el.offsetTop - 400;
+				positions[section] = el.offsetTop;
 			}
 			console.log(positions, section);
 
@@ -139,7 +139,7 @@ export default function Home() {
 						<div className='gap-5 flexRow items-center'>
 							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImLinkedin /></span></Link>
 							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImGithub /></span></Link>
-							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImPhone /></span></Link>
+							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImMail2 /></span></Link>
 							<a href='https://github.com/rakibulnahin/resume/blob/main/Nahin-AI.pdf'
 								className='px-5 py-3 flexRowCenter rounded-xl gap-3 bg-neon-blue text-white'
 								download="Nahin's CV"

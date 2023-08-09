@@ -6,7 +6,7 @@ import Contact from '@/components/Contact'
 import Experience from '@/components/Experience'
 import Skills from '@/components/Skills'
 
-import { ImLinkedin, ImGithub, ImPhone, ImDownload } from "react-icons/im"
+import { ImLinkedin, ImGithub, ImMail2, ImDownload } from "react-icons/im"
 import { useEffect, useRef, useState } from 'react'
 import Portfolio from '@/components/Portfolio'
 import { Londrina_Outline } from 'next/font/google'
@@ -31,6 +31,10 @@ export default function Home() {
 	const [offesets, setOffsets] = useState<{ [key: string]: number }>()
 	const [scrollPosition, setScrollPosition] = useState(0)
 	const [currentView, setCurrentView] = useState("about")
+	const [mousePosition, setMousePosition] = useState({
+		x: 0,
+		y: 0
+	})
 
 	useEffect(() => {
 		// Function to handle scroll event and update active section
@@ -82,6 +86,27 @@ export default function Home() {
 
 	}, [scrollPosition])
 
+	useEffect(() => {
+
+		const updateMousePosition = (e: { clientX: any; clientY: any }) => {
+			setMousePosition({
+				x: e.clientX,
+				y: e.clientY
+			})
+
+			console.log(mousePosition);
+			
+
+		}
+
+
+		window.addEventListener("mousemove", updateMousePosition);
+
+		return () => {
+			window.removeEventListener("mousemove", updateMousePosition);
+
+		}
+	}, [])
 
 	const scrollToView = (element: number) => {
 
@@ -123,10 +148,17 @@ export default function Home() {
 	}
 
 
+
+
 	return (
 		<main className="xl:px-24  w-screen flexCol items-center justify-between">
-
-			<div className='flexColCenter lg:flexRowCenter p-10 text-blue-100 w-full h-screen'>
+			<span className='w-80 h-80 bg-neon-blue/5 rounded-full fixed'
+				style={{
+					top: mousePosition.y-160,
+					left: mousePosition.x-160
+				}}
+			></span>
+			<div className='z-10 flexColCenter lg:flexRowCenter p-10 text-blue-100 w-full h-screen'>
 
 				<div className='flexCol justify-center p-5 w-2/3 gap-10 h-full'>
 					<span className='text-8xl text-neon-blue'><span className={londrina_outline.className}>Rakibul Alam Nahin</span></span>
@@ -137,9 +169,9 @@ export default function Home() {
 						<Image alt='developerimg' src={"/projects/developer.png"} height={200} width={200} />
 
 						<div className='gap-5 flexRow items-center'>
-							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImLinkedin /></span></Link>
-							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImGithub /></span></Link>
-							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue hover:border-2 hover:border-neon-blue duration-200 ease-in-out'><ImPhone /></span></Link>
+							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue border-2 border-transparent hover:border-neon-blue '><ImLinkedin /></span></Link>
+							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue border-2 border-transparent hover:border-neon-blue '><ImGithub /></span></Link>
+							<Link href={"/"}><span className='p-3 rounded-full flex text-2xl text-slate-400 hover:text-neon-blue border-2 border-transparent hover:border-neon-blue '><ImMail2 /></span></Link>
 							<a href='https://github.com/rakibulnahin/resume/blob/main/Nahin-AI.pdf'
 								className='px-5 py-3 flexRowCenter rounded-xl gap-3 bg-neon-blue text-white'
 								download="Nahin's CV"
@@ -156,7 +188,7 @@ export default function Home() {
 				<Image alt='nahinimg' src={"/projects/nahin.jpg"} height={400} width={400} className='rounded-full border-4 border-neon-blue' />
 			</div>
 
-			<div className='relative flexCol lg:flexRow gap-20'>
+			<div className='z-10 relative flexCol lg:flexRow gap-20'>
 				<div className='py-11 xl:py-24 pl-10 xl:pl-24 top-0 lg:sticky lg:w-[700px] h-full flexCol text-base font-medium text-slate-400'>
 					<span className='text-4xl sm:text-5xl font-bold text-slate-200 drop-shadow-sm'>Rakibul Alam Nahin</span>
 					<span className='my-4 text-xl font-medium text-slate-300'>Software Engineer/Developer</span>
@@ -238,7 +270,7 @@ export default function Home() {
 
 
 
-						<span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
+						{/* <span className='group flex flex-row items-center gap-4 cursor-pointer transition-all '
 							onClick={() => { scrollToView(3) }}
 
 						>
@@ -257,7 +289,7 @@ export default function Home() {
 									fontWeight: currentView == "portfolio" ? "600" : "",
 								}}
 							>PORTFOLIO</span>
-						</span>
+						</span> */}
 
 
 
@@ -296,7 +328,7 @@ export default function Home() {
 						<About ref={aboutRef} />
 						<Experience ref={experienceRef} />
 						<Skills ref={skillsRef} />
-						<Portfolio ref={portfolioRef} />
+						{/* <Portfolio ref={portfolioRef} /> */}
 						<Contact ref={contactRef} />
 					</div>
 				</div>
