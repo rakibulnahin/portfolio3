@@ -43,7 +43,7 @@ export default function Home() {
 		},
 
 		{
-			"name": "links",
+			"name": "contact",
 			"number": 4
 		},
 
@@ -106,13 +106,15 @@ export default function Home() {
 	useEffect(() => {
 		console.log(scrollPosition);
 		if (offesets) {
-			if (scrollPosition >= offesets["contact"]) {
-				setCurrentView("contact")
-			} else if (scrollPosition < offesets["contact"] && scrollPosition >= offesets["portfolio"]) {
+			if (scrollPosition >= offesets["portfolio"]) {
 				setCurrentView("portfolio")
-			} else if (scrollPosition < offesets["portfolio"] && scrollPosition >= offesets["skills"]) {
+			} else if (scrollPosition < offesets["portfolio"] && scrollPosition >= offesets["contact"]) {
+				setCurrentView("contact")
+			} else if (scrollPosition < offesets["contact"] && scrollPosition >= offesets["skills"]) {
 				setCurrentView("skills")
-			} else if (scrollPosition < offesets["skills"] && scrollPosition >= offesets["experience"]) {
+			} else if (scrollPosition < offesets["skills"] && scrollPosition >= offesets["education"]) {
+				setCurrentView("education")
+			} else if (scrollPosition < offesets["education"] && scrollPosition >= offesets["experience"]) {
 				setCurrentView("experience")
 			} else {
 				setCurrentView("about")
@@ -255,7 +257,7 @@ export default function Home() {
 
 						{
 							shortScroll.map((value, index) => (
-								<span className='group flexRow items-center gap-4 cursor-pointer transition-all '
+								<span key={index} className='group flexRow items-center gap-4 cursor-pointer transition-all '
 									onClick={() => { scrollToView(value.number) }}
 								>
 									<span

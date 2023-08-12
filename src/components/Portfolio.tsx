@@ -56,7 +56,7 @@ const Portfolio = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
             <div className='hidden md:flexCol gap-16 transition-all '>
                 {
                     projects.map((project, index) => (
-                        <div className='p-0.5 relative flexRowCenter gap-10 text-slate-300 rounded-lg object-cover'
+                        <div key={index} className='p-0.5 relative flexRowCenter gap-10 text-slate-300 rounded-lg object-cover'
                             style={
                                 {flexDirection : index%2 == 1 ? "row-reverse": "row"}
                             }
@@ -80,7 +80,7 @@ const Portfolio = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
             <div className='flexCol md:hidden gap-16 transition-all '>
                 {
                     projects.map((project, index) => (
-                        <div className='p-0.5 relative flexColCenter md:flexRowCenter gap-10 text-slate-300 rounded-lg object-cover' 
+                        <div key={index} className='p-0.5 relative flexColCenter md:flexRowCenter gap-10 text-slate-300 rounded-lg object-cover' 
                         >
                             <span className='flexColCenter w-full gap-5'>
                                 <span className='text-xl font-semibold underline'>{project.name}</span>

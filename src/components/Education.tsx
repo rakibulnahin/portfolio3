@@ -38,7 +38,7 @@ const Education = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     ]
 
     return (
-        <div ref={ref} id="experience" className='flexCol pb-10 gap-7'>
+        <div ref={ref} id="education" className='flexCol pb-10 gap-7'>
             <span className='flexRowCenter my-3 text-3xl font-semibold text-white underline'>
                 Education
             </span>
