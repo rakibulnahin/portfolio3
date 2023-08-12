@@ -102,5 +102,5 @@ const Portfolio = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
         </div>
     )
 })
-
+Portfolio.displayName = "Portfolio"
 export default Portfolio

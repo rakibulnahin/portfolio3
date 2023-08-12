@@ -84,4 +84,6 @@ const Education = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     )
 })
 
+Education.displayName = "Education"
+
 export default Education

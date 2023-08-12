@@ -114,5 +114,5 @@ const Skills = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
         </div>
     )
 })
-
+Skills.displayName = "Skills"
 export default Skills

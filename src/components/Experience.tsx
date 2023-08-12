@@ -89,4 +89,6 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
     )
 })
 
+Experience.displayName = "Experience"
+
 export default Experience
