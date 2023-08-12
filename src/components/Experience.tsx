@@ -33,7 +33,7 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
                 web project as a web ecommere developer and helped developing the Front-End using Next JS\
                 and Tailwind CSS. I was also involved in building sample UI for a food delivery app using \
                 React Native.",
-            "used": ["Next JS", "Tailwind CSS", "React Native Expo"]
+            "used": ["Next JS", "Tailwind CSS", "React Native"]
         }
     ]
 
@@ -47,8 +47,8 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
                 experince.map((value, index)=>(
                     <div 
                         key={index}
-                        className='flexRow rounded-lg
-                        pl-4 pr-16 py-5 gap-10 text-sm hover:bg-white/10
+                        className='flexCol max-sm:items-center sm:flexRow rounded-lg
+                        px-6 py-5 gap-10 text-sm hover:bg-white/10
                         group transition-all'
                     >
 
@@ -59,8 +59,8 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
                                 <span>{value.enddate}</span>
                             </span>
 
-                            <span className='flex w-0.5 h-full bg-slate-400 group-hover:bg-white'></span>
-                            <span className='flex w-3 h-3 bg-slate-400 group-hover:bg-white rounded-full'></span>
+                            <span className='hidden sm:flex w-0.5 h-full bg-slate-400 group-hover:bg-white'></span>
+                            <span className='hidden sm:flex w-3 h-3 bg-slate-400 group-hover:bg-white rounded-full'></span>
 
                         </div>
 
@@ -72,7 +72,7 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
                             </span>
 
                             <span className='group-hover:text-slate-200 duration-500 ease-in-out'>{value.description}</span>
-                            <span className='flexRow felx-wrap gap-4'>
+                            <span className='flexRow flex-wrap gap-4'>
                                 {
                                     value.used.map((value2, index2)=>(
                                         <span key={index2} className='bg-neon-blue/70 group-hover:bg-neon-blue text-white px-3 py-2 rounded-lg duration-500 ease-in-out'>{value2}</span>

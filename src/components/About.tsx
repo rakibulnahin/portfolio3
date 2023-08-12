@@ -2,12 +2,12 @@ import React, {forwardRef, ForwardedRef } from 'react'
 
 const About = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
   return (
-    <div ref={ref} id='about' className='pr-16 flex flex-col'>
-        <span className='my-3 text-4xl font-semibold text-white underline'>
+    <div ref={ref} id='about' className=' flex flex-col'>
+        <span className='my-3 flexRowCenter text-4xl font-semibold text-white underline'>
             About
         </span>
 
-        <span>
+        <span className=''>
             Being a tech-savy person I have always concerned with the new technologies and ways
             these can be used and improvised for human interaction. During my days of undergrad
             I was introduced to the exciting field of 

@@ -4,76 +4,100 @@ import React, { useState, forwardRef, ForwardedRef } from 'react'
 const Portfolio = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
 
 
-    const [pics, setPics] = useState([
-        "/projects/todo.png", 
-        "/projects/balibaba.png", 
-        "/projects/car_showroom.png",
-        "/projects/barikoi.png",
-        "/projects/foodpanda.png",
-    ])
+    const projects = [
+        {
+            name: "Balibaba E-Commerce",
+            description: "This is balibaba my project ecommerce site using MERN stack JWT and Redux\
+            I am developing it has my demo ecommerce page for skill development in mern stack",
+            image_path: "/projects/balibaba.png"
+        },
 
-    const changePic = (flag:number) => {
-        let x = []
-        if(flag == 0){
-            for (let index = 1; index <= pics.length; index++) {
-                x.push(pics[index%pics.length])
-                
-            }
-            setPics(x)
-        }
-        else{
-            x.push(pics[pics.length-1])
-            for (let index = 0; index < pics.length-1; index++) {
-                x.push(pics[index])
-                
-            }
-            setPics(x)
-        }
-        
-    }
+        {
+            name: "Car Showroom",
+            description: "This is car rental website I build for my univeristy project using MERN stack\
+            this site has the capability to rent car and hold all details of rentals, users and complete rentals system setting\
+            including admin privilages.",
+            image_path: "/projects/car_showroom.png"
+        },
+
+        {
+            name: "Location Tracking app",
+            description: "This app was created using React Native Expo \
+             used to test Barikoi API for tracking distances,\
+            time and real-time GPS tracking from one place to another.",
+            image_path: "/projects/barikoi.png"
+        },
+
+        {
+            name: "Food Panda",
+            description: "Beginner Level project created using React Native Expo for cloning UI of Food-Panda app.",
+            image_path: "/projects/foodpanda.png"
+        },
+
+        {
+            name: "Lazy Reminder",
+            description: "This simple but handy was buit using React Native Expo to track daily routines and give reminder\
+            about daily works and arrange works based on time limit and importance using color code.",
+            image_path: "/projects/todo1.png"
+        },
+
+
+    ]
+
 
     return (
-        <div ref={ref} id='portfolio' className='px-10 flexCol gap-7'>
+        <div ref={ref} id='portfolio' className='px-5 sm:px-24 pb-10 flexColCenter w-full'>
             <span className='flexRowCenter my-3 text-3xl font-semibold text-white underline'>
-                Portfolio
+                MERN Stack Portfolio
             </span>
 
-            <div className='relative w-full h-96 flexRowCenter '>
-                <div className='w-full h-full flexRow'>
-                    {/* <span className='w-1/4 bg-red-400'>asdfasdf</span>
-                    <span className='w-1/2 bg-green-300'>adsfasdf</span>
-                    <span className='w-1/4 bg-blue-300'>asdfasdf</span> */}
 
-                    <div className='absolute w-full h-full flexRowCenter gap-1 text-black transition-all'>
-                        <span className='w-40 h-48 flexRowCenter blur-sm'
-                            onClick={()=>changePic(0)}
+
+            <div className='hidden md:flexCol gap-16 transition-all '>
+                {
+                    projects.map((project, index) => (
+                        <div className='p-0.5 relative flexRowCenter gap-10 text-slate-300 rounded-lg object-cover'
+                            style={
+                                {flexDirection : index%2 == 1 ? "row-reverse": "row"}
+                            }
+                            
                         >
-                            <Image alt='image' width={1000} height={1000} 
-                                className='p-1 w-full h-full rounded-lg object-fill' 
-                                src={pics[0]} 
-                            />
-                        </span>
+                            <span className='flexCol w-1/3 gap-5'>
+                                <span className='text-xl font-semibold underline'>{project.name}</span>
+                                <span>{project.description}</span>
 
-                        <span className='w-64 h-64 flexRowCenter '>
-                            <Image alt='image' width={1500} height={1500} 
-                                className='z-10 p-1 w-64 h-64 hover:absolute hover:w-100 hover:h-100 
-                                    rounded-lg object-fill duration-300 ease-in-out' 
-                                    src={pics[1]} 
+                            </span>
+                            <Image src={project.image_path}
+                                className='w-60 h-60 rounded-lg'
+                                alt="portfolio image"
+                                width={350} height={350}
                             />
-
-                        </span>
-
-                        <span className='w-40 h-48 flexRowCenter blur-sm'
-                            onClick={()=>changePic(1)}
-                        >
-                            <Image alt='image' width={1000} height={1000} 
-                                className='p-1 w-full h-full rounded-lg object-fill' 
-                                src={pics[2]} 
-                            />
-                        </span>
-                    </div>
-                </div>
+                        </div>
+                    ))
+                }
             </div>
+
+            <div className='flexCol md:hidden gap-16 transition-all '>
+                {
+                    projects.map((project, index) => (
+                        <div className='p-0.5 relative flexColCenter md:flexRowCenter gap-10 text-slate-300 rounded-lg object-cover' 
+                        >
+                            <span className='flexColCenter w-full gap-5'>
+                                <span className='text-xl font-semibold underline'>{project.name}</span>
+                                <span>{project.description}</span>
+
+                            </span>
+                            <Image src={project.image_path}
+                                className='w-60 h-60 rounded-lg'
+                                alt="portfolio image"
+                                width={350} height={350}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+
+
 
         </div>
     )

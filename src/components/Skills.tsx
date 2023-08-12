@@ -69,11 +69,12 @@ const Skills = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
                 skills.map((value, index) => (
                     <div
                         key={index}
-                        className='flexRow rounded-lg pl-4 pr-16 py-5 gap-10
-                         text-sm hover:bg-white/10 group transition-all'
+                        className='flexCol max-sm:items-center sm:flexRow rounded-lg
+                        px-6 py-5 gap-10 text-sm hover:bg-white/10
+                        group transition-all'
                     >
 
-                        <div className='flexCol w-44 min-h-full items-center'>
+                        <div className='hidden sm:flexCol w-44 min-h-full items-center'>
 
                             <span className=' w-0.5 h-full bg-slate-400 group-hover:bg-white'></span>
                             <span className=' w-3 h-3 bg-slate-400 group-hover:bg-white rounded-full'></span>
