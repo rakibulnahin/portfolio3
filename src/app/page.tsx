@@ -77,17 +77,17 @@ export default function Home() {
 		const sections = ['about', 'skills', "experience", "education", "contact", "portfolio"];
 		const sectionPositions = sections.reduce((positions: { [key: string]: number }, section) => {
 
-			console.log(positions);
+			// console.log(positions);
 
 			const el = document.getElementById(section);
 			if (el) {
 				positions[section] = el.offsetTop;
 			}
-			console.log(positions, section);
+			// console.log(positions, section);
 
 			return positions;
 		}, {});
-		console.log(sectionPositions);
+		// console.log(sectionPositions);
 		setOffsets(sectionPositions)
 
 		const handleScroll = () => {
@@ -104,7 +104,7 @@ export default function Home() {
 	}, []);
 
 	useEffect(() => {
-		console.log(scrollPosition);
+		// console.log(scrollPosition);
 		if (offesets) {
 			if (scrollPosition >= offesets["portfolio"]) {
 				setCurrentView("portfolio")
@@ -120,7 +120,7 @@ export default function Home() {
 				setCurrentView("about")
 			}
 		}
-		console.log(currentView);
+		// console.log(currentView);
 
 	}, [scrollPosition])
 

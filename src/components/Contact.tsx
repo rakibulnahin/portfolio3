@@ -25,7 +25,7 @@ const Contact = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     }
 
     const onSendMessage = () => {
-        console.log(validMail, subject, text);
+        // console.log(validMail, subject, text);
 
         
         if (validMail && subject != "" && text != "") {
