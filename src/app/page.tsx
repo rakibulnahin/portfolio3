@@ -81,7 +81,7 @@ export default function Home() {
 
 			const el = document.getElementById(section);
 			if (el) {
-				positions[section] = el.offsetTop;
+				positions[section] = el.offsetTop+100;
 			}
 			// console.log(positions, section);
 
@@ -205,7 +205,7 @@ export default function Home() {
 
 
 
-			<div className='z-10 w-full  flexColCenter flex-col-reverse lg:flexRowCenter lg:p-10 text-blue-100  '>
+			<div className='z-10 w-full flexColCenter flex-col-reverse lg:flexRowCenter lg:p-10 text-blue-100  '>
 
 				<div className='p-5 w-full lg:w-2/3 h-full flexColCenter lg:items-start gap-10'>
 					<span className='text-6xl md:text-7xl lg:text-8xl text-neon-blue'><span className={londrina_outline.className}>Rakibul Alam Nahin</span></span>

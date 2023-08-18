@@ -12,6 +12,8 @@ const Skills = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
         {
             "section": "Programming Languages",
             "subsection": [
+                "Good at problem solving",
+                "Good at OOP Concepts",
                 "Proficient in data structure & algorithms.",
                 "Greedy approach and Graph Based Problems."
             ],
