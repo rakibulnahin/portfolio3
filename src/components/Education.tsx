@@ -13,6 +13,14 @@ const Education = forwardRef((props, ref: ForwardedRef<HTMLDivElement>) => {
     const experince: experinceType[] = [
 
         {
+            "organization": "Macquarie University",
+            "major": "Master of Information Technology in Artificial Intelligence",
+            "startdate": "SPRING 2024",
+            "enddate": "Ongoing",
+            "description": "",
+        },
+
+        {
             "organization": "BRAC University",
             "major": "Bachelor in Computer Science",
             "startdate": "SPRING 2019",

@@ -17,11 +17,11 @@ const Experience = forwardRef((props, ref:ForwardedRef<HTMLDivElement>) => {
             "organization": "BRAC BANK",
             "position": "Software Engineer Intern",
             "startdate": "JULY 2023",
-            "enddate": "ONGOING",
+            "enddate": "OCT 2023",
             "description": "I am envolved as a software engineer in the Core Banking part of \
                 BRAC BANK currenly working \
                 Web UI using HTMl, CSS and Javascript DOM along with Tomcat as server-side programming.",
-            "used": ["HTML", "CSS", "Javascript", "DOM", "Tomcat"]
+            "used": ["HTML", "CSS", "Javascript", "DOM", "Tomcat", "JAVA Sturt"]
         },
         
         {
